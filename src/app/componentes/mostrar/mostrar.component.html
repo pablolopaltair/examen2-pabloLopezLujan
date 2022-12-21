@@ -1,0 +1,45 @@
+
+<div class="container pt-4 pb-4 ">
+    <div class="d-grip gap-2-mt-4 mb-3">
+        <a routerLink="/create" class="btn btn-primary" type="button">Añadir nuevo Portero</a>
+      </div>
+
+      <div class="search-hero mt-2 mb-2">
+        <label>Búsqueda: </label>
+        <input  type="text" name="search" [(ngModel)]="searchText" placeholder="Buscar con cualquier dato ">
+      </div>
+
+    <table class="table">
+        <thead class="thead-primary text-white" style="background-color: #0d6efd;">
+          <tr>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Mes disponible</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <tr *ngFor = "let portero of Porteros | filter: searchText" style="background-color: rgb(245, 245, 245);" >
+            <td>{{portero.nombre_completo}}</td>
+            <td>{{portero.ciudad}}</td>
+            <td>{{portero.telefono}}</td>
+            <td>{{portero.email}}</td>
+            <td>{{portero.mes_disponible}}</td>
+
+            <td>
+                <button routerLink="/edit/{{portero.id}}" class="btn btn-outline-secondary">Editar</button>
+                <a>&nbsp;</a>
+                <button (click)="deleteRow(portero)" class="btn btn-outline-danger">Eliminar</button>
+
+            </td>
+          </tr>
+        </tbody>
+
+        
+      </table>
+
+</div>
